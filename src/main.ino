@@ -1,5 +1,5 @@
 // =====================================================
-// PROJET MAISON Ecologique INTELLIGENTE - CODE FINAL (4 modules fusionnes)
+// PROJET MAISON ECOLOGIQUE INTELLIGENTE - CODE FINAL (4 modules fusionnes)
 // =====================================================
 #include <ESP32Servo.h>
 
