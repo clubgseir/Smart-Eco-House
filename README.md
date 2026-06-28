@@ -1,173 +1,173 @@
 <div align="center">
 
-# Smart Eco-House
+# Maison Écologique Intelligente
 
-### ESP32 Development Environment — Setup Guide
+### Environnement de développement ESP32 — Guide d'installation
 
-*Get your Arduino IDE configured and ready to program the EcoHouse ESP32 board, from scratch to first upload.*
+*Configurez votre Arduino IDE et préparez-vous à programmer la carte ESP32 du projet, de zéro jusqu'au premier téléversement.*
 
 ---
 
 </div>
 
-## Overview
+## Aperçu
 
-This guide walks you through every step needed to set up your development environment on Windows — from installing the Arduino IDE to uploading your first sketch to the ESP32. No prior experience with Arduino or ESP32 is required.
+Ce guide vous accompagne pas à pas dans la configuration de votre environnement de développement sur Windows — de l'installation de l'Arduino IDE jusqu'au téléversement de votre premier programme sur l'ESP32. Aucune expérience préalable avec Arduino ou l'ESP32 n'est requise.
 
-**What you'll set up:**
+**Ce que vous allez installer :**
 
 - Arduino IDE 2.3.7
-- USB communication driver (so your PC recognises the board)
-- ESP32 board support inside Arduino IDE
-- ESP32Servo library (needed for motor/servo control)
+- Pilote de communication USB (pour que votre PC reconnaisse la carte)
+- Support de la carte ESP32 dans Arduino IDE
+- Bibliothèque ESP32Servo (nécessaire pour le contrôle des moteurs et servomoteurs)
 
-**Estimated time:** 15–20 minutes
+**Durée estimée :** 15 à 20 minutes
 
 ---
 
-## Requirements
+## Prérequis
 
-Before you begin, make sure you have:
+Avant de commencer, assurez-vous de disposer des éléments suivants :
 
-| Item | Details |
+| Élément | Détails |
 |---|---|
-| Computer | Windows 10 or later |
-| ESP32 board | Any ESP32 Dev Module |
-| USB cable | Matching your board (micro-USB or USB-C) |
-| Internet connection | Required to download packages |
+| Ordinateur | Windows 10 ou version ultérieure |
+| Carte ESP32 | N'importe quel module ESP32 Dev Module |
+| Câble USB | Compatible avec votre carte (micro-USB ou USB-C) |
+| Connexion internet | Nécessaire pour télécharger les paquets |
 
 ---
 
-## Setup Steps
+## Étapes d'installation
 
-### Step 1 — Install Arduino IDE
+### Étape 1 — Installer Arduino IDE
 
-Arduino IDE is the software you use to write and upload code to the ESP32.
+Arduino IDE est le logiciel utilisé pour écrire et téléverser du code sur l'ESP32.
 
-1. Go to the official Arduino download page:  
+1. Rendez-vous sur la page de téléchargement officielle d'Arduino :  
    **https://www.arduino.cc/en/software/**
 
-2. Download the **Windows installer** for version **2.3.7**
+2. Téléchargez le **programme d'installation Windows** pour la version **2.3.7**
 
-3. Run the installer and follow the on-screen instructions
+3. Lancez le programme d'installation et suivez les instructions à l'écran
 
-> **Not sure which file to download?** Choose the one labelled *"Windows Win 10 and newer, 64 bits"*.
+> **Vous ne savez pas quel fichier choisir ?** Sélectionnez celui intitulé *"Windows Win 10 and newer, 64 bits"*.
 
 ---
 
-### Step 2 — Install the USB-to-UART Driver
+### Étape 2 — Installer le pilote USB-vers-UART
 
-This driver lets your computer communicate with the ESP32 over USB. Without it, the board will not be detected.
+Ce pilote permet à votre ordinateur de communiquer avec l'ESP32 via USB. Sans lui, la carte ne sera pas détectée.
 
-1. Download the **CP210x VCP driver** from Silicon Labs:  
+1. Téléchargez le **pilote CP210x VCP** depuis Silicon Labs :  
    **https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers**
 
-2. Run the installer
+2. Lancez le programme d'installation
 
-3. **Restart your computer** once the installation finishes
+3. **Redémarrez votre ordinateur** une fois l'installation terminée
 
-> **Why is this needed?** The ESP32 uses a USB-to-serial chip (CP2102) to talk to your PC. Windows needs a special driver to understand it — similar to installing a printer driver.
+> **Pourquoi est-ce nécessaire ?** L'ESP32 utilise une puce USB-série (CP2102) pour communiquer avec votre PC. Windows a besoin d'un pilote spécial pour l'interpréter — à l'image de l'installation d'un pilote d'imprimante.
 
 ---
 
-### Step 3 — Add ESP32 Support to Arduino IDE
+### Étape 3 — Ajouter le support ESP32 à Arduino IDE
 
-By default, Arduino IDE only supports Arduino boards. This step teaches it to recognise the ESP32.
+Par défaut, Arduino IDE ne prend en charge que les cartes Arduino. Cette étape lui permet de reconnaître l'ESP32.
 
-1. Open Arduino IDE
+1. Ouvrez Arduino IDE
 
-2. Go to **File → Preferences** (or press `Ctrl + ,`)
+2. Allez dans **Fichier → Préférences** (ou appuyez sur `Ctrl + ,`)
 
-3. Find the field labelled **"Additional Boards Manager URLs"** and paste this URL into it:
+3. Dans le champ **"URL de gestionnaire de cartes supplémentaires"**, collez l'URL suivante :
 
    ```
    https://espressif.github.io/arduino-esp32/package_esp32_index.json
    ```
 
-4. Click **OK**
+4. Cliquez sur **OK**
 
 ---
 
-### Step 4 — Install the ESP32 Board Package
+### Étape 4 — Installer le paquet ESP32
 
-Now that Arduino IDE knows where to find ESP32 support, you can install it.
+Maintenant qu'Arduino IDE sait où trouver le support ESP32, vous pouvez l'installer.
 
-1. Go to **Tools → Board → Boards Manager**  
-   *(or click the board icon in the left sidebar)*
+1. Allez dans **Outils → Type de carte → Gestionnaire de cartes**  
+   *(ou cliquez sur l'icône de carte dans la barre latérale gauche)*
 
-2. In the search box, type: `esp32`
+2. Dans la barre de recherche, tapez : `esp32`
 
-3. Find the package named **"esp32 by Espressif Systems"** and click **Install**
+3. Trouvez le paquet **"esp32 by Espressif Systems"** et cliquez sur **Installer**
 
-4. Wait for the download and installation to complete — this may take a few minutes
-
----
-
-### Step 5 — Select the ESP32 Board
-
-Tell Arduino IDE which specific board you're using.
-
-1. Go to **Tools → Board → esp32**
-
-2. Select **"ESP32 Dev Module"** from the list
+4. Attendez la fin du téléchargement et de l'installation — cela peut prendre quelques minutes
 
 ---
 
-### Step 6 — Connect Your Board and Select the Port
+### Étape 5 — Sélectionner la carte ESP32
 
-1. Plug your ESP32 into your PC using the USB cable
+Indiquez à Arduino IDE quelle carte vous utilisez.
 
-2. Go to **Tools → Port**
+1. Allez dans **Outils → Type de carte → esp32**
 
-3. Select the port that appears in the list (it will look like `COM3` or `COM4`)
-
-> **No port showing up?** Try the following:
-> - Unplug and replug the USB cable
-> - Try a different USB port on your computer
-> - Your board may use a different driver chip (CH340 instead of CP2102). Download the CH340 driver from: **https://www.wch-ic.com/downloads/CH341SER_EXE.html**
+2. Sélectionnez **"ESP32 Dev Module"** dans la liste
 
 ---
 
-### Step 7 — Install the ESP32Servo Library
+### Étape 6 — Connecter la carte et sélectionner le port
 
-This library is required for controlling servo motors and other actuators in the EcoHouse project.
+1. Branchez votre ESP32 à votre PC via le câble USB
 
-1. Click the **Library Manager** icon in the left sidebar (it looks like a stack of books)
+2. Allez dans **Outils → Port**
 
-2. In the search box, type: `ESP32Servo`
+3. Sélectionnez le port qui apparaît dans la liste (il ressemblera à `COM3` ou `COM4`)
 
-3. Find the library by **Kevin Harrington, John K. Bennett** and click **Install**
-
----
-
-## You're All Set
-
-Your development environment is fully configured. You can now open any EcoHouse sketch and click the **Upload** button (→) to flash it to your board.
-
-If the upload succeeds, you'll see `Done uploading.` at the bottom of the screen.
+> **Aucun port ne s'affiche ?** Essayez les solutions suivantes :
+> - Débranchez puis rebranchez le câble USB
+> - Essayez un autre port USB sur votre ordinateur
+> - Votre carte utilise peut-être une puce différente (CH340 au lieu de CP2102). Téléchargez le pilote CH340 depuis : **https://www.wch-ic.com/downloads/CH341SER_EXE.html**
 
 ---
 
-## Troubleshooting
+### Étape 7 — Installer la bibliothèque ESP32Servo
 
-| Problem | Solution |
+Cette bibliothèque est nécessaire pour contrôler les servomoteurs et autres actionneurs du projet Smart Eco-House.
+
+1. Cliquez sur l'icône **Gestionnaire de bibliothèques** dans la barre latérale gauche (icône en forme de livres empilés)
+
+2. Dans la barre de recherche, tapez : `ESP32Servo`
+
+3. Trouvez la bibliothèque de **Kevin Harrington, John K. Bennett** et cliquez sur **Installer**
+
+---
+
+## Vous êtes prêt !
+
+Votre environnement de développement est entièrement configuré. Vous pouvez maintenant ouvrir n'importe quel programme du projet Smart Eco-House et cliquer sur le bouton **Téléverser** (→) pour flasher votre carte.
+
+Si le téléversement réussit, vous verrez le message `Téléversement terminé.` en bas de l'écran.
+
+---
+
+## Résolution des problèmes
+
+| Problème | Solution |
 |---|---|
-| Board not detected (no COM port) | Reinstall the CP210x or CH340 driver, then restart |
-| Upload fails with "port busy" error | Close any Serial Monitor windows that may be open |
-| "Board not found" error | Make sure you selected **ESP32 Dev Module** in Tools → Board |
-| Library not found during compilation | Re-check that ESP32Servo was installed via Library Manager |
+| Carte non détectée (aucun port COM) | Réinstallez le pilote CP210x ou CH340, puis redémarrez |
+| Échec du téléversement — erreur "port occupé" | Fermez les fenêtres du Moniteur Série ouvertes |
+| Erreur "carte introuvable" | Vérifiez que **ESP32 Dev Module** est sélectionné dans Outils → Type de carte |
+| Bibliothèque introuvable lors de la compilation | Vérifiez qu'ESP32Servo a bien été installée via le Gestionnaire de bibliothèques |
 
 ---
 
-## Reference Links
+## Liens utiles
 
-| Resource | URL |
+| Ressource | URL |
 |---|---|
 | Arduino IDE | https://www.arduino.cc/en/software/ |
-| CP210x USB Driver | https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers |
-| CH340 USB Driver | https://www.wch-ic.com/downloads/CH341SER_EXE.html |
-| ESP32 Board Package Index | https://espressif.github.io/arduino-esp32/package_esp32_index.json |
+| Pilote CP210x USB | https://www.silabs.com/software-and-tools/usb-to-uart-bridge-vcp-drivers |
+| Pilote CH340 USB | https://www.wch-ic.com/downloads/CH341SER_EXE.html |
+| Index du paquet ESP32 | https://espressif.github.io/arduino-esp32/package_esp32_index.json |
 
 ---
 
-<h3 align="center">🧑🏻‍💻 | Current Maintainer : <a href="https://github.com/t4lhawi" target="_blank">-------</a></h3>
+<h3 align="center">🧑🏻‍💻 | Responsable actuel : <a href="https://github.com/mohamedtalhaouii" target="_blank">----</a></h3>
